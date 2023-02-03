@@ -4,11 +4,12 @@ import Foundation
 public class RulesFilter {
     public static let rules: [Rule.Type] = [
         TodoRule.self,
-        KeyMissingRule.self,
-        LineOrderRule.self,
+//        KeyMissingRule.self,
+        KeyOrderRule.self,
         DuplicateKeyRule.self,
         SyntaxRule.self,
         ValueEmptyRule.self,
+        KeyEmptyRule.self,
         MultiLinefeedRule.self,
         SpaceInKeyRule.self,
         BaseL10nMismatchedRule.self
@@ -36,7 +37,7 @@ public struct TodoRule: Rule {
     }
 }
 
-struct LineOrderRule: Rule {
+struct SyntaxRule: Rule {
     static var description: RuleDescription = .init(identifier: "", name: "", description: "")
 
     init() {
@@ -47,17 +48,7 @@ struct LineOrderRule: Rule {
     }
 }
 
-public struct DuplicateKeyRule: Rule {
-    public static var description: RuleDescription = .init(identifier: "duplicate_key", name: "Duplicate key", description: "")
-
-    public init() {}
-
-    public func validate(baseProject: LocalizedProject, project: LocalizedProject) -> [StyleViolation] {
-        []
-    }
-}
-
-struct SyntaxRule: Rule {
+struct KeyEmptyRule: Rule {
     static var description: RuleDescription = .init(identifier: "", name: "", description: "")
 
     init() {

@@ -4,6 +4,9 @@ import PackageDescription
 
 let package = Package(
     name: "L10nLint",
+    platforms: [
+        .macOS(.v12)
+    ],
     dependencies: [
          .package(url: "https://github.com/apple/swift-argument-parser", from: "1.2.1"),
     ],

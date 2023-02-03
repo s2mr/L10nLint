@@ -29,7 +29,7 @@ extension MainTool {
 
             let rules = RulesFilter.rules.map { $0.init() }
             let linters = projects.map { project in
-                Linter(baseProject: baseProject, project: project, rules: rules)
+                return Linter(baseProject: baseProject, project: project, rules: rules)
             }
 
             return try linters.flatMap {

@@ -1,4 +1,6 @@
 // MARK: MainScreen
-"MainScreen.Hello" = "See you";
+"MainScreen.OnlyBase" = "Main";
 
 // MARK: SecondScreen
+"SecondScreen.Second" = "Second";
+"SecondScreen.First" = "First";
