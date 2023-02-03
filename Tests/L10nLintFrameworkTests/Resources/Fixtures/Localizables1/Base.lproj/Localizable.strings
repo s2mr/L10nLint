@@ -1,0 +1,16 @@
+// TODO: MainScreen
+"MainScreen.Hello" = "Hello";
+"MainScreen.Duplicate" = "Duplicate";
+"MainScreen.Duplicate" = "Duplicate";
+"MainScreen.Syntax" = "Syntax" ;
+"MainScreen.Empty" = "";
+
+// MARK: SecondScreen
+" MainScreen.SpaceInKey1" = "Space in key";
+"MainScreen .SpaceInKey2" = "Space in key";
+"MainScreen. SpaceInKey3" = "Space in key";
+"MainScreen.SpaceInKey4 " = "Space in key";
+
+// TODO: MARK:
+// MARK: TODO: SecondScreen
+/* FIXME: */

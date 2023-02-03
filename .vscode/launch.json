@@ -1,0 +1,40 @@
+{
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug LocalizationValidator",
+            "program": "${workspaceFolder:LocalizationValidator}/.build/debug/LocalizationValidator",
+            "args": [],
+            "cwd": "${workspaceFolder:LocalizationValidator}",
+            "preLaunchTask": "swift: Build Debug LocalizationValidator"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Release LocalizationValidator",
+            "program": "${workspaceFolder:LocalizationValidator}/.build/release/LocalizationValidator",
+            "args": [],
+            "cwd": "${workspaceFolder:LocalizationValidator}",
+            "preLaunchTask": "swift: Build Release LocalizationValidator"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug l10n-lint",
+            "program": "${workspaceFolder:LocalizationValidator}/.build/debug/l10n-lint",
+            "args": [],
+            "cwd": "${workspaceFolder:LocalizationValidator}",
+            "preLaunchTask": "swift: Build Debug l10n-lint"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Release l10n-lint",
+            "program": "${workspaceFolder:LocalizationValidator}/.build/release/l10n-lint",
+            "args": [],
+            "cwd": "${workspaceFolder:LocalizationValidator}",
+            "preLaunchTask": "swift: Build Release l10n-lint"
+        }
+    ]
+}
