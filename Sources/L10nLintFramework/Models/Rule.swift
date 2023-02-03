@@ -8,5 +8,5 @@ public protocol Rule {
     /// A default initializer for rules. All rules need to be trivially initializable.
     init()
 
-    func validate(baseProject: LocalizedProject, project: LocalizedProject) -> [StyleViolation]
+    func validate(baseProject: LocalizedProject, project: LocalizedProject) throws -> [StyleViolation]
 }

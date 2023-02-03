@@ -11,9 +11,9 @@ public final class Linter {
         self.rules = rules
     }
 
-    public func lint() -> [StyleViolation] {
-        rules.flatMap { rule in
-            rule.validate(baseProject: baseProject, project: project)
+    public func lint() throws -> [StyleViolation] {
+        try rules.flatMap { rule in
+            try rule.validate(baseProject: baseProject, project: project)
         }
     }
 }

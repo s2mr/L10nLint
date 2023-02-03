@@ -1,5 +1,5 @@
 SWIFT_BUILD_FLAGS := -c release --disable-sandbox --arch arm64 --arch x86_64
-TOOL_NAME := l10n-lint
+TOOL_NAME := l10nlint
 
 TOOL_BIN_DIR := $(shell swift build $(SWIFT_BUILD_FLAGS) --show-bin-path)
 TOOL_BIN := $(TOOL_BIN_DIR)/$(TOOL_NAME)
@@ -7,13 +7,13 @@ TOOL_BIN := $(TOOL_BIN_DIR)/$(TOOL_NAME)
 .PHONY: $(MAKECMDGOALS)
 
 build-cp-zsh: build
-	sudo rm -f /usr/local/bin/l10n-lint
-	sudo cp $(TOOL_BIN) /usr/local/bin/l10n-lint
+	sudo rm -f /usr/local/bin/$(TOOL_NAME)
+	sudo cp $(TOOL_BIN) /usr/local/bin/$(TOOL_NAME)
 	make install-completion-zsh
 
 install-completion-zsh:
 	mkdir -p ~/.zsh/competion
-	l10n-lint --generate-completion-script zsh > ~/.zsh/completion/_l10n-lint
+	$(TOOL_NAME) --generate-completion-script zsh > ~/.zsh/completion/_$(TOOL_NAME)
 
 build:
 	swift build $(SWIFT_BUILD_FLAGS)
