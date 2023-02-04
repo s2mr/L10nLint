@@ -82,7 +82,8 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
-      useCustomWorkingDirectory = "NO"
+      useCustomWorkingDirectory = "YES"
+      customWorkingDirectory = "/Users/s06100/go/src/github.com/s2mr/l10nlint"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
@@ -100,7 +101,7 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "/Users/s06100/go/src/github.com/s2mr/l10nlint/Tests/L10nLintFrameworkTests/Resources/Fixtures/Localizables2"
+            argument = ""
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>

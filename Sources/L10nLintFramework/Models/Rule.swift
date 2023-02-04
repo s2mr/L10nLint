@@ -9,4 +9,10 @@ public protocol Rule {
     init()
 
     func validate(baseProject: LocalizedProject, project: LocalizedProject) throws -> [StyleViolation]
+
+    func apply(configuration: Configuration)
+}
+
+public extension Rule {
+    func apply(configuration: Configuration) {}
 }

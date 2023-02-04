@@ -1,0 +1,4 @@
+base_path: Tests/L10nLintFrameworkTests/Resources/Fixtures/Localizables1
+
+disabled_rules:
+  - todo

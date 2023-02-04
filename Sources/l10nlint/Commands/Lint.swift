@@ -2,17 +2,24 @@ import ArgumentParser
 import Foundation
 import L10nLintFramework
 
+// TODO: Check command
+// warningがある場合Dangerで表示
+
 // TODO: Correct command
 // - Baseを編集したらそれぞれにコピー
 // - 並び順を自動補正
 
 extension MainTool {
     struct Lint: ParsableCommand {
-        @Argument
-        var path: String
+        @Option
+        var config: String?
 
         func run() throws {
-            let url = URL(string: path)!
+            let configPath = config ?? Configuration.defaultFileName
+            let configURL = URL(fileURLWithPath: configPath)
+            let data = try Data(contentsOf: configURL)
+            let configuration = try Configuration.load(data: data)
+            let url = URL(fileURLWithPath: configuration.basePath)
             let projects = try LocalizedProjectFactory.localizedProjects(baseDirectory: url)
 
             let violations = try DispatchQueue.global(qos: .userInteractive).sync {

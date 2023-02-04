@@ -10,11 +10,11 @@ final class L10nLintFrameworkTests: XCTestCase {
         XCTAssertEqual(
             violations.map(\.location.point),
             [
-                LocationPoint(line: 8, character: 4),
-                LocationPoint(line: 9, character: 10),
-                LocationPoint(line: 10, character: 4),
-                LocationPoint(line: 12, character: 15),
-                LocationPoint(line: 14, character: 15)
+                LocationPoint(line: 8, character: 1),
+                LocationPoint(line: 9, character: 1),
+                LocationPoint(line: 10, character: 1),
+                LocationPoint(line: 12, character: 1),
+                LocationPoint(line: 14, character: 1)
             ]
         )
     }
