@@ -1,0 +1,22 @@
+// MARK: Invalid MARK syntax
+
+//  MARK: Common
+// MARK:  Common
+//MARK: Common
+// MARK:Common
+
+//  FIXME: Common
+// FIXME:  Common
+//FIXME: Common
+// FIXME:Common
+
+//  TODO: Common
+// TODO:  Common
+//TODO: Common
+// TODO:Common
+// FIXME:
+// MARK:
+
+// MARK: Correct syntax ↓
+// TODO: Hello
+// FIXME: Hello world

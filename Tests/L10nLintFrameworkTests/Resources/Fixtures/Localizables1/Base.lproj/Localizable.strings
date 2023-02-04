@@ -1,16 +1,28 @@
-// TODO: MainScreen
+// MARK: MainScreen
 "MainScreen.Hello" = "Hello";
 "MainScreen.Duplicate" = "Duplicate";
 "MainScreen.Duplicate" = "Duplicate";
 "MainScreen.Syntax" = "Syntax" ;
-"MainScreen.Empty" = "";
 
-// MARK: SecondScreen
-" MainScreen.SpaceInKey1" = "Space in key";
-"MainScreen .SpaceInKey2" = "Space in key";
-"MainScreen. SpaceInKey3" = "Space in key";
-"MainScreen.SpaceInKey4 " = "Space in key";
 
-// TODO: MARK:
+// TODO: Screen name:
 // MARK: TODO: SecondScreen
 /* FIXME: */
+"SomeKey1" = "TODO"
+"SomeKey2" = "TODO: hogehoge"
+"SomeKey3" = "FIXME"
+"SomeKey4" = "FIXME: hogehoge"
+
+
+// MARK: KeyEmpty, ValueEmpty
+"" = "KeyEmpty";
+"ValueEmpty" = "";
+
+// MARK: SpaceInKey
+" Space" = "Space before";
+"Sp ace" = "Space middle";
+"Sp a ce" = "Space middle";
+"Sp a  ce" = "Space middle";
+"Space " = "Space after";
+" " = "Only space";
+"   " = "Only spaces";

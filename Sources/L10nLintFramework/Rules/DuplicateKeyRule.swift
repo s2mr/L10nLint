@@ -12,7 +12,7 @@ public struct DuplicateKeyRule: Rule {
 
         var keys: [String] = []
         var violations: [StyleViolation] = []
-        for result in keyRegex.matches(in: projectContents, range: NSRange(location: 0, length: projectContents.count)) {
+        for result in keyRegex.matches(in: projectContents) {
             guard let range = Range(result.range(at: 1), in: projectContents) else { continue }
 
             let key = String(projectContents[range])

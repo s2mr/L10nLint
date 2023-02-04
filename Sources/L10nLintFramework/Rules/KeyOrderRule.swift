@@ -1,7 +1,7 @@
 import Foundation
 
 struct KeyOrderRule: Rule {
-    static var description: RuleDescription = .init(identifier: "key_order", name: "Key order", description: "")
+    static var description: RuleDescription = .init(identifier: "key_order", name: "Key order", description: "Check key order between Base and each language files.")
 
     init() {}
 
@@ -11,14 +11,14 @@ struct KeyOrderRule: Rule {
         let keyRegex = try NSRegularExpression(pattern: #"^"(.*)" = .*";$"#, options: [.anchorsMatchLines])
 
         let baseContents = baseProject.stringsFile.contents
-        let baseKeyDataArray: [KeyData] = keyRegex.matches(in: baseContents, range: NSRange(location: 0, length: baseContents.count))
+        let baseKeyDataArray: [KeyData] = keyRegex.matches(in: baseContents)
             .compactMap { result in
                 guard let range = Range(result.range(at: 1), in: baseContents) else { return nil }
                 return KeyData(name: baseProject.name, key: String(baseContents[range]), range: result.range(at: 1))
             }
 
         let projectContents = project.stringsFile.contents
-        let projectKeyDataArray: [KeyData] = keyRegex.matches(in: projectContents, range: NSRange(location: 0, length: projectContents.count))
+        let projectKeyDataArray: [KeyData] = keyRegex.matches(in: projectContents)
             .compactMap { result in
                 guard let range = Range(result.range(at: 1), in: projectContents) else { return nil }
                 return KeyData(name: project.name,key: String(projectContents[range]), range: result.range(at: 1))

@@ -2,6 +2,10 @@ import ArgumentParser
 import Foundation
 import L10nLintFramework
 
+// TODO: Correct command
+// - Baseを編集したらそれぞれにコピー
+// - 並び順を自動補正
+
 extension MainTool {
     struct Lint: ParsableCommand {
         @Argument
@@ -11,16 +15,17 @@ extension MainTool {
             let url = URL(string: path)!
             let projects = try LocalizedProjectFactory.localizedProjects(baseDirectory: url)
 
-            try DispatchQueue.global(qos: .userInteractive).sync {
+            let violations = try DispatchQueue.global(qos: .userInteractive).sync {
                 let violations = try lint(projects: projects)
                 let reportString = XcodeReporter.generateReport(violations)
                 if !reportString.isEmpty {
                     queuedPrint(reportString)
                 }
+                return violations
+            }
 
-                if violations.map(\.severity).contains(.error) {
-                    throw ExitCode.failure
-                }
+            if violations.map(\.severity).contains(.error) {
+                throw ExitCode.failure
             }
         }
 
