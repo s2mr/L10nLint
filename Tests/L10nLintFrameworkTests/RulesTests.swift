@@ -1,8 +1,7 @@
 import XCTest
 @testable import L10nLintFramework
-import class Foundation.Bundle
 
-final class L10nLintFrameworkTests: XCTestCase {
+final class RulesTests: XCTestCase {
     func testTodoRule() throws {
         let baseProject = try TestHelper.localizedProjects(fixtureName: "Localizables1")
             .first(where: { $0.name == "Base" })!

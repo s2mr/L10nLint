@@ -23,15 +23,6 @@ struct KeyOrderRule: Rule {
                 guard let range = Range(result.range(at: 1), in: projectContents) else { return nil }
                 return KeyData(name: project.name,key: String(projectContents[range]), range: result.range(at: 1))
             }
-
-        func makeViolation(range: NSRange, severity: ViolationSeverity = .warning, reason: String?) -> StyleViolation {
-            StyleViolation(
-                ruleDescription: Self.description,
-                severity: severity,
-                location: Location(file: project.stringsFile, characterOffset: range.location),
-                reason: reason
-            )
-        }
         let changes = projectKeyDataArray.difference(from: baseKeyDataArray, by: { $0.key == $1.key })
             .inferringMoves()
 
@@ -39,7 +30,6 @@ struct KeyOrderRule: Rule {
         for change in changes {
             switch change {
             case let .insert(_, projectKeyData, nil):
-                // 定義されていないkeyです
                 violations += [
                     StyleViolation(
                         ruleDescription: Self.description,
@@ -50,7 +40,6 @@ struct KeyOrderRule: Rule {
                 ]
 
             case let .insert(_, projectKeyData, .some(associatedWith)):
-                // Keyの順番が違います。associatedWithに移動してください
                 let line = Location(file: baseProject.stringsFile, characterOffset: baseKeyDataArray[associatedWith].range.location).line.map(String.init)
                 violations += [
                     StyleViolation(
@@ -63,7 +52,6 @@ struct KeyOrderRule: Rule {
 
             case let .remove(_, baseKeyData, nil):
                 let baseLine = Location(file: baseProject.stringsFile, characterOffset: baseKeyData.range.location).line
-                // Keyが足りません
                 violations += [
                     StyleViolation(
                         ruleDescription: Self.description,
@@ -74,7 +62,6 @@ struct KeyOrderRule: Rule {
                 ]
 
             case let .remove(_, baseKeyData, .some(associatedWith)):
-                // Keyの順番が違います。associatedWithにあります。
                 let baseLine = Location(file: baseProject.stringsFile, characterOffset: baseKeyData.range.location).line
                 let line = Location(file: project.stringsFile, characterOffset: projectKeyDataArray[associatedWith].range.location).line.map(String.init)
                 violations += [

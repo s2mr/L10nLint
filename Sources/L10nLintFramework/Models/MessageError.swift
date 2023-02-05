@@ -1,6 +1,6 @@
 import Foundation
 
-struct MessageError: LocalizedError, CustomStringConvertible {
+struct MessageError: LocalizedError, CustomStringConvertible, Equatable {
     var description: String { message }
 
     var message: String
