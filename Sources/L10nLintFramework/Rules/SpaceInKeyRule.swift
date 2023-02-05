@@ -1,7 +1,7 @@
 import Foundation
 
 struct SpaceInKeyRule: Rule {
-    static var description: RuleDescription = .init(identifier: "space_in_key", name: "Space in key", description: "")
+    static let description: RuleDescription = .init(identifier: "space_in_key", name: "Space in key", description: "Key should not have space.")
 
     init() {}
 

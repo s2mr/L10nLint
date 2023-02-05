@@ -1,7 +1,7 @@
 import Foundation
 
 struct MarkSyntaxRule: Rule {
-    static var description: RuleDescription = .init(identifier: "mark_syntax", name: "Mark syntax", description: "Annotation should have around one space.")
+    static let description: RuleDescription = .init(identifier: "mark_syntax", name: "Mark syntax", description: "Annotation should have around one space.")
 
     init() {}
 

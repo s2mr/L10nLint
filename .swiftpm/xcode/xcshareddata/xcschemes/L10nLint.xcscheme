@@ -101,7 +101,7 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = ""
+            argument = "rules"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>

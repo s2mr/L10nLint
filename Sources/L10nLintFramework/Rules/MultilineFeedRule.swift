@@ -1,7 +1,7 @@
 import Foundation
 
 struct MultiLinefeedRule: Rule {
-    static var description: RuleDescription = .init(identifier: "multi_linefeed", name: "Multi linefeed", description: "Linefeed should be one.")
+    static let description: RuleDescription = .init(identifier: "multi_linefeed", name: "Multi linefeed", description: "Linefeed should be one.")
 
     init() {}
 

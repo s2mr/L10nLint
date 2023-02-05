@@ -1,5 +1,6 @@
 import ArgumentParser
 import Foundation
+import L10nLintFramework
 
 @main
 struct MainTool: ParsableCommand {
@@ -11,9 +12,18 @@ struct MainTool: ParsableCommand {
         return CommandConfiguration(
             commandName: "l10nlint",
             subcommands: [
-                Lint.self
+                Lint.self,
+                Rules.self
             ],
             defaultSubcommand: Lint.self
         )
     }()
+
+    @Option
+    var config: String?
+
+    func validate() throws {
+        let configuration = try Configuration.load(customPath: config)
+        try RulesVerifier.verify(configuration: configuration)
+    }
 }

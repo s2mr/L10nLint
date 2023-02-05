@@ -1,7 +1,7 @@
 import Foundation
 
 struct KeyOrderRule: Rule {
-    static var description: RuleDescription = .init(identifier: "key_order", name: "Key order", description: "Check key order between Base and each language files.")
+    static let description: RuleDescription = .init(identifier: "key_order", name: "Key order", description: "Between Base and each language file's key should be same order.")
 
     init() {}
 

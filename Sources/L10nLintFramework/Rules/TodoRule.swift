@@ -1,7 +1,7 @@
 import Foundation
 
 public struct TodoRule: Rule {
-    public static var description: RuleDescription = .init(identifier: "todo", name: "Todo", description: "TODOs and FIXMEs should be resolved.")
+    public static let description: RuleDescription = .init(identifier: "todo", name: "Todo", description: "TODOs and FIXMEs should be resolved.")
 
     public var isSummaryEnabled: Bool = true
     public var summaryViolationLimit: Int = 10

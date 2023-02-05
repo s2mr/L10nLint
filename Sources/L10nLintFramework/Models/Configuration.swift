@@ -18,12 +18,15 @@ public struct Configuration: Codable {
         case enabledRules = "enabled_rules"
     }
 
-    public static var `default`: Configuration {
-        Self()
+    public static func load(customPath path: String?) throws -> Configuration {
+        let configPath = path ?? Self.defaultFileName
+        let configURL = URL(fileURLWithPath: configPath)
+        return try Configuration.load(at: configURL)
     }
 
-    public static func load(data: Data) throws -> Configuration {
-        try YAMLDecoder().decode(Self.self, from: data)
+    public static func load(at configURL: URL) throws -> Configuration {
+        let data = try Data(contentsOf: configURL)
+        return try YAMLDecoder().decode(Self.self, from: data)
     }
 
     /// The default file name to look for user-defined configurations.

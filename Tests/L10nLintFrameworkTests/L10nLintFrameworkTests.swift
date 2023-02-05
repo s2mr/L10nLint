@@ -57,20 +57,20 @@ final class L10nLintFrameworkTests: XCTestCase {
         )
     }
 
-    func testKeyEmptyRule() throws {
+    func testEmptyKeyRule() throws {
         let baseProject = try TestHelper.localizedProjects(fixtureName: "Localizables1")
             .first(where: { $0.name == "Base" })!
-        let violations = try KeyEmptyRule().validate(baseProject: baseProject, project: baseProject)
+        let violations = try EmptyKeyRule().validate(baseProject: baseProject, project: baseProject)
         XCTAssertEqual(
             violations.map(\.location.point),
             [LocationPoint(line: 18, character: 1)]
         )
     }
 
-    func testValueEmptyRule() throws {
+    func testEmptyValueRule() throws {
         let baseProject = try TestHelper.localizedProjects(fixtureName: "Localizables1")
             .first(where: { $0.name == "Base" })!
-        let violations = try ValueEmptyRule().validate(baseProject: baseProject, project: baseProject)
+        let violations = try EmptyValueRule().validate(baseProject: baseProject, project: baseProject)
         XCTAssertEqual(
             violations.map(\.location.point),
             [LocationPoint(line: 19, character: 1)]

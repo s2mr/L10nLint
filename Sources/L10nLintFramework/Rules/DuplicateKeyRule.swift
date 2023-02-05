@@ -1,7 +1,7 @@
 import Foundation
 
 public struct DuplicateKeyRule: Rule {
-    public static var description: RuleDescription = .init(identifier: "duplicate_key", name: "Duplicate key", description: "")
+    public static let description: RuleDescription = .init(identifier: "duplicate_key", name: "Duplicate key", description: "Duplicated key should be resolved.")
 
     public init() {}
 
