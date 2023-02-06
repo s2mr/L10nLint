@@ -7,6 +7,9 @@ let package = Package(
     platforms: [
         .macOS(.v12)
     ],
+    products: [
+        .executable(name: "l10nlint", targets: ["l10nlint"])
+    ],
     dependencies: [
          .package(url: "https://github.com/apple/swift-argument-parser", from: "1.2.1"),
          .package(url: "https://github.com/jpsim/Yams.git", from: "5.0.4")
