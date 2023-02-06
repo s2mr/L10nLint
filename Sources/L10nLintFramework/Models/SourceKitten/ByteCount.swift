@@ -1,4 +1,3 @@
-
 /// Represents the number of bytes in a string. Could be used to model offsets into a string, or the distance between
 /// two locations in a string.
 public struct ByteCount: ExpressibleByIntegerLiteral, Hashable {
