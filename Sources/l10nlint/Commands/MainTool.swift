@@ -11,6 +11,7 @@ struct MainTool: ParsableCommand {
 
         return CommandConfiguration(
             commandName: "l10nlint",
+            abstract: "Lint tool for your Localizable.strings",
             subcommands: [
                 Lint.self,
                 Rules.self
@@ -19,11 +20,11 @@ struct MainTool: ParsableCommand {
         )
     }()
 
-    @Option
-    var config: String?
+    @OptionGroup
+    var arguments: DefaultArguments
 
     func validate() throws {
-        let configuration = try Configuration.load(customPath: config)
+        let configuration = try Configuration.load(customPath: arguments.config)
         try RulesVerifier.verify(configuration: configuration)
     }
 }

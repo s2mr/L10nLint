@@ -11,14 +11,18 @@ import L10nLintFramework
 
 extension MainTool {
     struct Rules: ParsableCommand {
-        @Option
-        var config: String?
+        static let configuration: CommandConfiguration = .init(
+            abstract: "Show all rules whether enabled or disabled"
+        )
 
-        @Flag
+        @OptionGroup
+        var arguments: DefaultArguments
+
+        @Flag(help: "Show your rule's parameters in config")
         var printParameters: Bool = false
 
         func run() throws {
-            let configuration = try Configuration.load(customPath: config)
+            let configuration = try Configuration.load(customPath: arguments.config)
 
             if printParameters {
                 queuedPrint(configuration.ruleConfigurations)

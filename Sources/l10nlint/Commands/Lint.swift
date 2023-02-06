@@ -11,11 +11,15 @@ import L10nLintFramework
 
 extension MainTool {
     struct Lint: ParsableCommand {
-        @Option
-        var config: String?
+        static let configuration: CommandConfiguration = .init(
+            abstract: "Lint your Localizable.strings"
+        )
+
+        @OptionGroup
+        var arguments: DefaultArguments
 
         func run() throws {
-            let configuration = try Configuration.load(customPath: config)
+            let configuration = try Configuration.load(customPath: arguments.config)
             let violations = try LintRunner.run(configuration: configuration)
             let reporter = reporterFrom(identifier: configuration.reporter ?? XcodeReporter.identifier)
             let reportString = reporter.generateReport(violations)
