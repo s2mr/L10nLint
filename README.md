@@ -1,3 +1,3 @@
-# LocalizationValidator
+# L10nLint
 
-A description of this package.
+Lint tool for your Localizable.strings
