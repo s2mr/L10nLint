@@ -44,7 +44,7 @@ struct KeyOrderRule: Rule {
                 violations += [
                     StyleViolation(
                         ruleDescription: Self.description,
-                        severity: .error,
+                        severity: .warning,
                         location: Location(file: project.stringsFile, characterOffset: projectKeyData.range.location),
                         reason: "'\(projectKeyData.key)' should be placed at line:\(line ?? "nil")"
                     )
@@ -67,7 +67,7 @@ struct KeyOrderRule: Rule {
                 violations += [
                     StyleViolation(
                         ruleDescription: Self.description,
-                        severity: .error,
+                        severity: .warning,
                         location: Location(file: project.stringsFile.path, line: baseLine, character: 1),
                         reason: "'\(baseKeyData.key)' should be placed here. See at line:\(line ?? "nil")"
                     )
