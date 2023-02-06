@@ -6,7 +6,7 @@ import L10nLintFramework
 // warningがある場合Dangerで表示
 
 // TODO: Correct command
-// - Baseを編集したらそれぞれにコピー
+// - Baseを編集したらそれぞれにコピー // markerをつけてその中身をコピー
 // - 並び順を自動補正
 
 extension MainTool {
@@ -16,35 +16,14 @@ extension MainTool {
 
         func run() throws {
             let configuration = try Configuration.load(customPath: config)
-            let url = URL(fileURLWithPath: configuration.basePath)
-            let projects = try LocalizedProjectFactory.localizedProjects(baseDirectory: url)
-
-            let violations = try DispatchQueue.global(qos: .userInteractive).sync {
-                let violations = try lint(configuration: configuration, projects: projects)
-                let reportString = XcodeReporter.generateReport(violations)
-                if !reportString.isEmpty {
-                    queuedPrint(reportString)
-                }
-                return violations
+            let violations = try LintRunner.run(configuration: configuration)
+            let reporter = reporterFrom(identifier: configuration.reporter ?? XcodeReporter.identifier)
+            let reportString = reporter.generateReport(violations)
+            if !reportString.isEmpty {
+                queuedPrint(reportString)
             }
-
             if violations.map(\.severity).contains(.error) {
                 throw ExitCode.failure
-            }
-        }
-
-        func lint(configuration: Configuration, projects: [LocalizedProject]) throws -> [StyleViolation] {
-            guard let baseProject = projects.first(where: { $0.name == "Base" }) else { return [] }
-
-            let rules = RulesFilter.enabledRules(for: configuration).map { rule in
-                rule.init()
-            }
-            let linters = projects.map { project in
-                return Linter(baseProject: baseProject, project: project, rules: rules)
-            }
-
-            return try linters.flatMap {
-                try $0.lint()
             }
         }
     }

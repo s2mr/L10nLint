@@ -1,10 +1,9 @@
 import Foundation
 
-public struct TodoRule: Rule {
+public struct TodoRule: ConfigurationProviderRule {
     public static let description: RuleDescription = .init(identifier: "todo", name: "Todo", description: "TODOs and FIXMEs should be resolved.")
 
-    public var isSummaryEnabled: Bool = true
-    public var summaryViolationLimit: Int = 10
+    public var configuration = TodoRuleConfiguration()
 
     public init() {}
 
@@ -25,7 +24,7 @@ public struct TodoRule: Rule {
             )
         }
 
-        if isSummaryEnabled && dataSets.count > summaryViolationLimit {
+        if configuration.isSummaryEnabled && dataSets.count > configuration.summaryViolationLimit {
             let lines = dataSets.compactMap(\.violation.location.line).map(String.init).joined(separator: ",")
 
             return [StyleViolation(
@@ -38,9 +37,6 @@ public struct TodoRule: Rule {
         else {
             return dataSets.map(\.violation)
         }
-    }
-
-    public func apply(configuration: Configuration) {
     }
 }
 

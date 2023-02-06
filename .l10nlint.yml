@@ -1,4 +1,8 @@
 base_path: Tests/L10nLintFrameworkTests/Resources/Fixtures/Localizables1
 
 disabled_rules:
-  - todo
+  - empty_value
+
+todo:
+  is_summary_enabled: true
+  summary_violation_limit: 20
