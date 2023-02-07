@@ -2,9 +2,6 @@ import ArgumentParser
 import Foundation
 import L10nLintFramework
 
-// TODO: Check command
-// warningがある場合Dangerで表示
-
 // TODO: Correct command
 // - Baseを編集したらそれぞれにコピー // markerをつけてその中身をコピー
 // - 並び順を自動補正
@@ -18,10 +15,13 @@ extension MainTool {
         @OptionGroup
         var arguments: DefaultArguments
 
+        @Option(help: "Change report format")
+        var reporter: String?
+
         func run() throws {
             let configuration = try Configuration.load(customPath: arguments.config)
             let violations = try LintRunner.run(configuration: configuration)
-            let reporter = reporterFrom(identifier: configuration.reporter ?? XcodeReporter.identifier)
+            let reporter = reporterFrom(identifier: reporter ?? configuration.reporter ?? XcodeReporter.identifier)
             let reportString = reporter.generateReport(violations)
             if !reportString.isEmpty {
                 queuedPrint(reportString)
