@@ -38,7 +38,6 @@ final class RulesTests: XCTestCase {
         XCTAssertEqual(
             violations.map(\.location.point),
             [
-                LocationPoint(line: 5, character: 1),
                 LocationPoint(line: 2, character: 1),
                 LocationPoint(line: 2, character: 2),
                 LocationPoint(line: 6, character: 2)

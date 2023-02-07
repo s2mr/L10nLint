@@ -61,17 +61,8 @@ struct KeyOrderRule: Rule {
                     )
                 ]
 
-            case let .remove(_, baseKeyData, .some(associatedWith)):
-                let baseLine = Location(file: baseProject.stringsFile, characterOffset: baseKeyData.range.location).line
-                let line = Location(file: project.stringsFile, characterOffset: projectKeyDataArray[associatedWith].range.location).line.map(String.init)
-                violations += [
-                    StyleViolation(
-                        ruleDescription: Self.description,
-                        severity: .warning,
-                        location: Location(file: project.stringsFile.path, line: baseLine, character: 1),
-                        reason: "'\(baseKeyData.key)' should be placed here. See at line:\(line ?? "nil")"
-                    )
-                ]
+            case .remove(_, _, .some):
+                break
             }
         }
 
