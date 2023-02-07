@@ -23,7 +23,11 @@ zip: build
 	rm -f $(TOOL_NAME).zip
 	zip -j $(TOOL_NAME).zip $(TOOL_BIN)
 
-release: zip
+change-version:
+	@[ -n "$(TAG)" ] || (echo "\nERROR: Make sure setting environment variable 'TAG'." && exit 1)
+	./Scripts/change-version.sh $(TAG)
+
+release: change-version zip
 	@[ -n "$(TAG)" ] || (echo "\nERROR: Make sure setting environment variable 'TAG'." && exit 1)
 	gh release create "$(TAG)" --generate-notes
 	gh release upload $(TAG) $(TOOL_NAME).zip

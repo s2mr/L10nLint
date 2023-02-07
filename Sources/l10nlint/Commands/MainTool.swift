@@ -12,6 +12,7 @@ struct MainTool: ParsableCommand {
         return CommandConfiguration(
             commandName: "l10nlint",
             abstract: "Lint tool for your Localizable.strings",
+            version: Version.current,
             subcommands: [
                 Lint.self,
                 Rules.self
