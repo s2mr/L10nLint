@@ -2,13 +2,6 @@ import ArgumentParser
 import Foundation
 import L10nLintFramework
 
-// TODO: Lint command
-// Base, enが同じかどうか
-
-// TODO: Correct command
-// - Baseを編集したらそれぞれにコピー // markerをつけてその中身をコピー
-// - 並び順を自動補正
-
 extension MainTool {
     struct Lint: ParsableCommand {
         static let configuration: CommandConfiguration = .init(

@@ -36,13 +36,18 @@ Path: Localizables4/ja.lproj/Localizable.strings
         XCTAssertEqual(rewriterMock.contents.description, """
 Path: Localizables4/Base.lproj/Localizable.strings
 ~~~
+// Header
 // MARK: Main
 "MainKey" = "Main value";
 
 // MARK: Second
 "SecondKey" = "Second value";
+"SecondGen1" = "Second gen value 1";
+"SecondGen2" = "Second gen value 2";
 
 // MARK: Third
+"ThirdGen1" = "Third gen value 1";
+  "ThirdGen2"   =   "Third gen value 2"  ;
 
 ~~~
 Path: Localizables4/ja.lproj/Localizable.strings

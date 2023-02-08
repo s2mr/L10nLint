@@ -27,13 +27,18 @@ final class ProjectGeneratorTests: XCTestCase {
 """)
         let markerRemovedContent = ProjectGenerator().markerRemovedContent(baseProject: baseProject)
         XCTAssertEqual(markerRemovedContent, """
+// Header
 // MARK: Main
 "MainKey" = "Main value";
 
 // MARK: Second
 "SecondKey" = "Second value";
+"SecondGen1" = "Second gen value 1";
+"SecondGen2" = "Second gen value 2";
 
 // MARK: Third
+"ThirdGen1" = "Third gen value 1";
+  "ThirdGen2"   =   "Third gen value 2"  ;
 
 """)
     }

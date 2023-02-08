@@ -46,7 +46,8 @@ public final class ProjectGenerator {
 
     public func markerRemovedContent(baseProject: LocalizedProject) -> String {
         let mutableString = NSMutableString(string: baseProject.stringsFile.contents)
-        CopyMarkerDetector.Const.markerRegex.replaceMatches(in: mutableString, range: NSRange(location: 0, length: mutableString.length), withTemplate: "")
+        CopyMarkerDetector.Const.startMarkerRegex.replaceMatches(in: mutableString, range: NSRange(location: 0, length: mutableString.length), withTemplate: "")
+        CopyMarkerDetector.Const.endMarkerRegex.replaceMatches(in: mutableString, range: NSRange(location: 0, length: mutableString.length), withTemplate: "")
         return mutableString as String
     }
 }
