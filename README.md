@@ -32,6 +32,8 @@ Copy keys to each `strings` based on your `.l10nlint.yml`:
 l10nlint copy [--delete-marker]
 ```
 
+https://user-images.githubusercontent.com/19924081/217507201-b7933fed-09bb-4ba6-aed0-5bed50b19695.mov
+
 Define markers in your `Base.lproj/Localizable.strings`
 Surround to copy content with `// @copy` and `// @end` keyword.
 `--delete-marker` option is delete marker in your `Base.lproj/Localizable.strings`
