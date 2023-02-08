@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION_FILE=Sources/l10nlint/Generated/Version.swift
+source ./Scripts/variable.sh
 
 echo "enum Version {
     static let current = \"$1\"

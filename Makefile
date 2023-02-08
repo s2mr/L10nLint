@@ -26,6 +26,10 @@ zip: build
 change-version:
 	@[ -n "$(TAG)" ] || (echo "\nERROR: Make sure setting environment variable 'TAG'." && exit 1)
 	./Scripts/change-version.sh $(TAG)
+	git add Sources/l10nlint/Generated/Version.swift
+	git commit -m "Bump version to $(TAG)"
+	git tag $(TAG)
+	git push $(TAG)
 
 release: change-version zip
 	@[ -n "$(TAG)" ] || (echo "\nERROR: Make sure setting environment variable 'TAG'." && exit 1)
