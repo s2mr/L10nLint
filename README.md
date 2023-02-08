@@ -128,22 +128,21 @@ USAGE: l10nlint [--config <config>] <subcommand>
 
 OPTIONS:
   --config <config>       Custom config file path
+  --version               Show the version.
   -h, --help              Show help information.
 
 SUBCOMMANDS:
   lint (default)          Lint your Localizable.strings
   rules                   Show all rules whether enabled or disabled
+  copy                    Copy keys your Base Localizable.strings
 
   See 'l10nlint help <subcommand>' for detailed help.
-
 ```
 
 ```
 l10nlint rules --help
 
 ---
-Building for debugging...
-Build complete! (0.16s)
 OVERVIEW: Show all rules whether enabled or disabled
 
 USAGE: l10nlint rules [--config <config>] [--print-parameters]
@@ -152,5 +151,4 @@ OPTIONS:
   --config <config>       Custom config file path
   --print-parameters      Show your rule's parameters in config
   -h, --help              Show help information.
-
 ```
