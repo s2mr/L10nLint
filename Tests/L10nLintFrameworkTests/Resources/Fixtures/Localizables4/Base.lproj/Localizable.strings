@@ -1,0 +1,18 @@
+// @copy
+// Header
+// @end
+// MARK: Main
+"MainKey" = "Main value";
+
+// MARK: Second
+"SecondKey" = "Second value";
+// @copy
+"SecondGen1" = "Second gen value 1";
+"SecondGen2" = "Second gen value 2";
+// @end
+
+// MARK: Third
+// @copy
+"ThirdGen1" = "Third gen value 1";
+  "ThirdGen2"   =   "Third gen value 2"  ;
+// @end

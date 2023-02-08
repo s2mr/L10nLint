@@ -1,0 +1,7 @@
+// MARK: Main
+"MainKey" = "メインのvalue";
+
+// MARK: Second
+"SecondKey" = "2つ目のvalue";
+
+// MARK: Third

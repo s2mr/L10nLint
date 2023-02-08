@@ -1,4 +1,4 @@
-base_path: Tests/L10nLintFrameworkTests/Resources/Fixtures/Localizables1
+base_path: Tests/L10nLintFrameworkTests/Resources/Fixtures/Localizables4
 
 disabled_rules:
   - empty_value

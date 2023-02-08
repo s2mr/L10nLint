@@ -28,8 +28,7 @@ todo              TODOs and FIXMEs should be resolved.
 
 This command is built on [swift-argument-parser](https://github.com/apple/swift-argument-parser).
 
-Please refer to [this article](https://github.com/apple/swift-argument-parser/blob/main/Sources/ArgumentParser/Documentation.docc/Articles/InstallingCompletionScripts.md#installing-zsh-completions
-).
+Please refer to [this article](https://github.com/apple/swift-argument-parser/blob/main/Sources/ArgumentParser/Documentation.docc/Articles/InstallingCompletionScripts.md).
 
 Replace `example` with `l10nlint`.
 

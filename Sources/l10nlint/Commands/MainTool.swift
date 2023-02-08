@@ -15,7 +15,8 @@ struct MainTool: ParsableCommand {
             version: Version.current,
             subcommands: [
                 Lint.self,
-                Rules.self
+                Rules.self,
+                Copy.self
             ],
             defaultSubcommand: Lint.self
         )
