@@ -2,7 +2,7 @@
 
 Lint tool for your Localizable.strings
 
-## Usage
+## Lint command
 
 Lint based on your `.l10nlint.yml`:
 ```
@@ -11,7 +11,7 @@ l10nlint
 
 When run with Xcode prebuild script, shows warning and errors.
 
-## Rules
+### Rules
 
 ```
 duplicate_key     Duplicated key should be resolved.
@@ -24,13 +24,29 @@ space_in_key      Key should not have space.
 todo              TODOs and FIXMEs should be resolved.
 ```
 
-### Command completion
+## Copy command
+This is useful feature!✨
 
-This command is built on [swift-argument-parser](https://github.com/apple/swift-argument-parser).
+Copy keys to each `strings` based on your `.l10nlint.yml`:
+```
+l10nlint copy [--delete-marker]
+```
 
-Please refer to [this article](https://github.com/apple/swift-argument-parser/blob/main/Sources/ArgumentParser/Documentation.docc/Articles/InstallingCompletionScripts.md).
+Define markers in your `Base.lproj/Localizable.strings`
+Surround to copy content with `// @copy` and `// @end` keyword.
+`--delete-marker` option is delete marker in your `Base.lproj/Localizable.strings`
 
-Replace `example` with `l10nlint`.
+If above line on your marker is comment, detect equality line,
+if above line on your marker is key, detect equality key.
+
+```
+// MARK: Main
+"MainKey" = "Main value";
+// @copy
+"SecondGen1" = "Second gen value 1";
+"SecondGen2" = "Second gen value 2";
+// @end
+```
 
 ## Installation
 
@@ -74,7 +90,7 @@ mint run s2mr/l10nlint [COMMAND] [OPTIONS]
 
 You can also install l10nlint by downloading `l10nlint.zip` from the latest GitHub release.
 
-# Setup
+## Setup
 Place `.l10nlint.yml` file at your repository root.
 `base_path` is directory path that is contains `Localizable.strings`
 
@@ -89,6 +105,14 @@ todo:
   is_summary_enabled: true
   summary_violation_limit: 20
 ```
+
+## Command completion
+
+This command is built on [swift-argument-parser](https://github.com/apple/swift-argument-parser).
+
+Please refer to [this article](https://github.com/apple/swift-argument-parser/blob/main/Sources/ArgumentParser/Documentation.docc/Articles/InstallingCompletionScripts.md).
+
+Replace `example` with `l10nlint`.
 
 ## Help
 
