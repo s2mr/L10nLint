@@ -8,11 +8,8 @@ public final class FileRewriter: FileRewriterProtocol {
     public init() {}
 
     public func rewrite(at path: String, with string: String) throws {
-        guard let writeHandle = FileHandle(forWritingAtPath: path) else { return }
         guard let data = string.data(using: .utf8) else { return }
-
-        try writeHandle.seek(toOffset: .zero)
-        try writeHandle.write(contentsOf: data)
+        try data.write(to: URL(fileURLWithPath: path))
     }
 }
 
