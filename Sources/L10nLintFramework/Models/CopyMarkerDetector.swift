@@ -6,17 +6,17 @@ final class CopyMarkerDetector {
         static let endMark = "@end"
 
         static let markerRegex = try! NSRegularExpression(
-            pattern: #"\/\/ \#(Const.startMark)\n(.*?)\n\/\/ \#(Const.endMark)\n"#,
+            pattern: #"\#(Const.startMarkerRegex.pattern)(.*?)\n\#(Const.endMarkerRegex.pattern)"#,
             options: [.anchorsMatchLines, .dotMatchesLineSeparators]
         )
 
         static let startMarkerRegex = try! NSRegularExpression(
-            pattern: #"\/\/ \#(Const.startMark)\n"#,
+            pattern: #"\/\/ *\#(Const.startMark)\n"#,
             options: [.anchorsMatchLines, .dotMatchesLineSeparators]
         )
 
         static let endMarkerRegex = try! NSRegularExpression(
-            pattern: #"\/\/ \#(Const.endMark)\n"#,
+            pattern: #"\/\/ *\#(Const.endMark)\n"#,
             options: [.anchorsMatchLines, .dotMatchesLineSeparators]
         )
 

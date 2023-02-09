@@ -19,10 +19,10 @@ final class ProjectGeneratorTests: XCTestCase {
 // @end
 
 // MARK: Third
-// @copy
+//@copy
 "ThirdGen1" = "Third gen value 1";
   "ThirdGen2"   =   "Third gen value 2"  ;
-// @end
+//@end
 
 """)
         let markerRemovedContent = ProjectGenerator().markerRemovedContent(baseProject: baseProject)
