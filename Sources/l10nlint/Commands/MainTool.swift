@@ -16,7 +16,8 @@ struct MainTool: ParsableCommand {
             subcommands: [
                 Lint.self,
                 Rules.self,
-                Copy.self
+                Copy.self,
+                GenerateXCFileList.self
             ],
             defaultSubcommand: Lint.self
         )

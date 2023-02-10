@@ -11,10 +11,16 @@ extension MainTool {
         @OptionGroup
         var arguments: DefaultArguments
 
-        @Option(help: "Change report format")
+        @Option(
+            name: .shortAndLong,
+            help: "Change report format"
+        )
         var reporter: String?
 
-        @Flag(help: "When have lint error, exit with error code")
+        @Flag(
+            name: .shortAndLong,
+            help: "When have lint error, exit with error code"
+        )
         var failOnError: Bool = false
 
         func run() throws {

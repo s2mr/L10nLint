@@ -11,7 +11,10 @@ extension MainTool {
         @OptionGroup
         var arguments: DefaultArguments
 
-        @Flag(help: "Whether delete marker in Base Localizable.strings")
+        @Flag(
+            name: .shortAndLong,
+            help: "Whether delete marker in Base Localizable.strings"
+        )
         var deleteMarker: Bool = false
 
         func run() throws {
