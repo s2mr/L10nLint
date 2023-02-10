@@ -1,6 +1,9 @@
 import ArgumentParser
 
 struct DefaultArguments: ParsableArguments {
-    @Option(help: "Custom config file path")
+    @Option(
+        name: .shortAndLong,
+        help: "Custom config file path"
+    )
     var config: String?
 }
