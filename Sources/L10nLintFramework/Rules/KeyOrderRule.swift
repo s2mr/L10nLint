@@ -8,7 +8,7 @@ struct KeyOrderRule: Rule {
     func validate(baseProject: LocalizedProject, project: LocalizedProject) throws -> [StyleViolation] {
         guard baseProject.id != project.id else { return [] }
 
-        let keyRegex = try NSRegularExpression(pattern: #"^"(.*)" = .*";$"#, options: [.anchorsMatchLines])
+        let keyRegex = try NSRegularExpression(pattern: #"^ *"(.*)" *= *".*" *; *$"#, options: [.anchorsMatchLines])
 
         let baseContents = baseProject.stringsFile.contents
         let baseKeyDataArray: [KeyData] = keyRegex.matches(in: baseContents)
