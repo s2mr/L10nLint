@@ -2,5 +2,5 @@
 "MainScreen.OnlyJa" = "メイン";
 
 // MARK: SecondScreen
-"SecondScreen.Second" = "2つ目";
-"SecondScreen.First" = "1つ目";
+ "SecondScreen.Second"  = "2つ目";
+"SecondScreen.First" =  "1つ目";
