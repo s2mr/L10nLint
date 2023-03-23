@@ -1,0 +1,8 @@
+// MARK: KeyValueExtraSpaceRule
+"Key1" = "Value1";
+"Key2" = "㐷";
+"Key3" = "㑮";
+"㑮" = "㐷";
+"㑯" = "㐹";
+"㐷" = "㑮";
+"㐹" = "㑯";
