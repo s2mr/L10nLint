@@ -6,7 +6,6 @@ struct MixedChineseRule: Rule {
     init() {}
 
     func validate(baseProject: LocalizedProject, project: LocalizedProject) throws -> [StyleViolation] {
-        print("project name: \(project.name)")
         switch project.name {
         case "zh-Hans":
             // check include traditional characters in simplified chinese

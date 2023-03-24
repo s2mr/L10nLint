@@ -1,4 +1,4 @@
-// MARK: KeyValueExtraSpaceRule
+// MARK: MixedChineseRule
 "Key1" = "Value1";
 "Key2" = "㐷";
 "Key3" = "㑮";
