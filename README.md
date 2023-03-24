@@ -19,6 +19,7 @@ empty_key         Empty localized key should be resolved.
 empty_value       Empty localized value should be resolved.
 key_order         Between Base and each language file's key should be same order.
 mark_syntax       Annotation should have around one space.
+mixed_chinese     The mixing of traditional and simplified chinese characters should be resolved.
 multi_linefeed    Linefeed should be one.
 space_in_key      Key should not have space.
 todo              TODOs and FIXMEs should be resolved.

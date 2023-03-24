@@ -8,7 +8,8 @@ public class EmbeddedRules {
         EmptyKeyRule.self,
         MultiLinefeedRule.self,
         SpaceInKeyRule.self,
-        KeyValueExtraSpaceRule.self
+        KeyValueExtraSpaceRule.self,
+        MixedChineseRule.self
     ]
 
     public static let defaultEnabledRules: [Rule.Type] = [
@@ -20,6 +21,7 @@ public class EmbeddedRules {
         EmptyKeyRule.self,
         MultiLinefeedRule.self,
         SpaceInKeyRule.self,
-        KeyValueExtraSpaceRule.self
+        KeyValueExtraSpaceRule.self,
+        MixedChineseRule.self
     ]
 }

@@ -132,6 +132,40 @@ final class RulesTests: XCTestCase {
             ]
         )
     }
+
+    func testMixedChineseRuleZhHant() throws {
+        let baseProject = try TestHelper.localizedProjects(fixtureName: "Localizables6")
+            .first(where: { $0.name == "Base" })!
+        let zhHantProject = try TestHelper.localizedProjects(fixtureName: "Localizables6")
+            .first(where: { $0.name == "zh-Hant" })!
+
+        let violations = try MixedChineseRule().validate(baseProject: baseProject, project: zhHantProject)
+        XCTAssertEqual(
+            violations.map(\.location.point),
+            [
+                LocationPoint(line: 3, character: 11),
+                LocationPoint(line: 5, character: 8),
+                LocationPoint(line: 6, character: 8)
+            ]
+        )
+    }
+
+    func testMixedChineseRuleZhHans() throws {
+        let baseProject = try TestHelper.localizedProjects(fixtureName: "Localizables6")
+            .first(where: { $0.name == "Base" })!
+        let zhHansProject = try TestHelper.localizedProjects(fixtureName: "Localizables6")
+            .first(where: { $0.name == "zh-Hans" })!
+
+        let violations = try MixedChineseRule().validate(baseProject: baseProject, project: zhHansProject)
+        XCTAssertEqual(
+            violations.map(\.location.point),
+            [
+                LocationPoint(line: 4, character: 11),
+                LocationPoint(line: 7, character: 8),
+                LocationPoint(line: 8, character: 8)
+            ]
+        )
+    }
 }
 
 extension Location {
