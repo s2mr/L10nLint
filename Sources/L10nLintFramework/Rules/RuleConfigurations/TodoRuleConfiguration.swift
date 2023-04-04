@@ -1,4 +1,4 @@
-public struct TodoRuleConfiguration: Codable, RuleConfigurationProtocol {
+public struct TodoRuleConfiguration: Equatable, Codable, RuleConfigurationProtocol {
     public enum DefaultValue {
         public static let isSummaryEnabled: Bool = false
         public static let summaryViolationLimit: Int = 10

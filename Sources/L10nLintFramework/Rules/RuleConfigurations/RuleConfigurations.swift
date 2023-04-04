@@ -1,6 +1,6 @@
 import Yams
 
-public struct RuleConfigurations {
+public struct RuleConfigurations: Equatable {
     public var todo: TodoRuleConfiguration?
 }
 

@@ -26,8 +26,19 @@ public final class LintRunner {
             return Linter(baseProject: baseProject, project: project, rules: rules)
         }
 
-        return try linters.flatMap {
+        let violations =  try linters.flatMap {
             try $0.lint()
+        }
+
+        guard configuration.prioritizeTodoOverMixedChinese else { return violations }
+        let todoViolations = violations.filter { $0.ruleIdentifier == TodoRule.description.identifier }
+
+        return violations.filter { violation in
+            guard violation.ruleIdentifier == MixedChineseRule.description.identifier else { return true }
+
+            return !todoViolations.contains(where: { todoViolation in
+                violation.location.file == todoViolation.location.file && violation.location.line == todoViolation.location.line
+            })
         }
     }
 }
