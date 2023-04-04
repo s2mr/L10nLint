@@ -1,7 +1,7 @@
 import Foundation
 import Yams
 
-public struct Configuration {
+public struct Configuration: Equatable {
     public static func load(customPath path: String?) throws -> Configuration {
         let configPath = path ?? Self.defaultFileName
         let configURL = URL(fileURLWithPath: configPath)
@@ -25,6 +25,9 @@ public struct Configuration {
 
     public var enabledRules: [String]? = []
 
+    /// When `todo` and `mixed_chinese` violations occur at the same time, priority is given to `todo`.
+    public var prioritizeTodoOverMixedChinese: Bool = false
+
     public var ruleConfigurations: RuleConfigurations = .init()
 }
 
@@ -34,6 +37,7 @@ extension Configuration: Decodable {
         case basePath = "base_path"
         case disabledRules = "disabled_rules"
         case enabledRules = "enabled_rules"
+        case prioritizeTodoOverMixedChinese = "prioritize_todo_over_mixed_chinese"
     }
 
     public init(from decoder: Decoder) throws {
@@ -42,6 +46,7 @@ extension Configuration: Decodable {
         self.basePath = try container.decode(String.self, forKey: .basePath)
         self.disabledRules = try container.decodeIfPresent([String].self, forKey: .disabledRules)
         self.enabledRules = try container.decodeIfPresent([String].self, forKey: .enabledRules)
+        self.prioritizeTodoOverMixedChinese = try container.decodeIfPresent(Bool.self, forKey: .prioritizeTodoOverMixedChinese) ?? false
 
         self.ruleConfigurations = try RuleConfigurations(from: decoder)
     }

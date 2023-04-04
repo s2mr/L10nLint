@@ -1,0 +1,9 @@
+base_path: Tests/L10nLintFrameworkTests/Resources/Fixtures/Localizables4
+prioritize_todo_over_mixed_chinese: true
+
+disabled_rules:
+  - empty_value
+
+todo:
+  is_summary_enabled: true
+  summary_violation_limit: 20
