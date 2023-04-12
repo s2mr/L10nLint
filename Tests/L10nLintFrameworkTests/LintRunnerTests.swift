@@ -22,8 +22,8 @@ final class LintRunnerTests: XCTestCase {
         ))
         XCTAssertEqual(violations.map(\.ruleWithLocationPoint), [
             RuleWithLocationPoint(ruleIdentifier: "todo", file: "zh-Hans.lproj", line: 2, character: 1),
-            RuleWithLocationPoint(ruleIdentifier: "mixed_chinese", file: "zh-Hans.lproj", line: 3, character: 12),
-            RuleWithLocationPoint(ruleIdentifier: "todo", file: "zh-Hant.lproj", line: 2, character: 1)
+            RuleWithLocationPoint(ruleIdentifier: "todo", file: "zh-Hant.lproj", line: 2, character: 1),
+            RuleWithLocationPoint(ruleIdentifier: "mixed_chinese", file: "zh-Hans.lproj", line: 3, character: 12)
         ])
     }
 }

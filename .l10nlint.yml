@@ -1,4 +1,5 @@
-base_path: Tests/L10nLintFrameworkTests/Resources/Fixtures/Localizables4
+base_path: Tests/L10nLintFrameworkTests/Resources/Fixtures/Localizables7
+prioritize_todo_over_mixed_chinese: true
 
 disabled_rules:
   - empty_value

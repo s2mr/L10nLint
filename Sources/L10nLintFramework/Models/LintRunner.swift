@@ -22,6 +22,7 @@ public final class LintRunner {
             }
             return rule
         }
+
         let linters = projects.map { project in
             return Linter(baseProject: baseProject, project: project, rules: rules)
         }
@@ -33,12 +34,62 @@ public final class LintRunner {
         guard configuration.prioritizeTodoOverMixedChinese else { return violations }
         let todoViolations = violations.filter { $0.ruleIdentifier == TodoRule.description.identifier }
 
-        return violations.filter { violation in
-            guard violation.ruleIdentifier == MixedChineseRule.description.identifier else { return true }
+        let filteredMixedChineseViolations = violations.filter { violation in
+            guard violation.ruleIdentifier == MixedChineseRule.description.identifier else { return false }
 
             return !todoViolations.contains(where: { todoViolation in
                 violation.location.file == todoViolation.location.file && violation.location.line == todoViolation.location.line
             })
         }
+
+        let otherViolations = violations.filter {
+            $0.ruleIdentifier != MixedChineseRule.description.identifier &&
+            $0.ruleIdentifier != TodoRule.description.identifier
+        }
+
+        let todoConfiguration = configuration.ruleConfigurations.todo ?? .init()
+        if todoConfiguration.isSummaryEnabled && todoViolations.count > todoConfiguration.summaryViolationLimit {
+            var todoViolationsByFile = todoViolations.reduce(into: [String: [StyleViolation]]()) { partialResult, violation in
+                if partialResult[violation.location.file ?? ""] == nil {
+                    partialResult[violation.location.file ?? ""] = []
+                }
+                partialResult[violation.location.file ?? ""]?.append(violation)
+            }
+
+            for violations in todoViolationsByFile {
+                let lines = violations.value.compactMap(\.location.line).map(String.init).joined(separator: ",")
+                if var violation = violations.value.first {
+                    violation.location.line = 1
+                    violation.reason = "Lines has FIXME or TODO. line: \(lines)"
+                    todoViolationsByFile[violations.key] = [violation]
+                }
+            }
+
+            return todoViolationsByFile.flatMap(\.value) + filteredMixedChineseViolations + otherViolations
+        }
+        else {
+            return todoViolations + filteredMixedChineseViolations + otherViolations
+        }
+    }
+}
+
+private extension [StyleViolation] {
+    func filterByPrioritizeTodoOverMixedChinese(for configuration: Configuration) -> [StyleViolation] {
+        guard configuration.prioritizeTodoOverMixedChinese else { return self }
+        let todoViolations = filter { $0.ruleIdentifier == TodoRule.description.identifier }
+
+        let filteredMixedChineseViolations = filter { violation in
+            guard violation.ruleIdentifier == MixedChineseRule.description.identifier else { return false }
+
+            return !todoViolations.contains(where: { todoViolation in
+                violation.location.file == todoViolation.location.file && violation.location.line == todoViolation.location.line
+            })
+        }
+
+        let otherViolations = filter {
+            $0.ruleIdentifier != MixedChineseRule.description.identifier &&
+            $0.ruleIdentifier != TodoRule.description.identifier
+        }
+        return todoViolations + filteredMixedChineseViolations + otherViolations
     }
 }
