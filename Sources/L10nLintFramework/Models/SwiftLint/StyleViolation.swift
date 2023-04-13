@@ -13,10 +13,10 @@ public struct StyleViolation: CustomStringConvertible, Equatable, Codable {
     public private(set) var severity: ViolationSeverity
 
     /// The location of this violation.
-    public private(set) var location: Location
+    public var location: Location
 
     /// The justification for this violation.
-    public let reason: String
+    public var reason: String
 
     /// A printable description for this violation.
     public var description: String {

@@ -24,19 +24,7 @@ public struct TodoRule: ConfigurationProviderRule {
             )
         }
 
-        if configuration.isSummaryEnabled && dataSets.count > configuration.summaryViolationLimit {
-            let lines = dataSets.compactMap(\.violation.location.line).map(String.init).joined(separator: ",")
-
-            return [StyleViolation(
-                ruleDescription: Self.description,
-                severity: .warning,
-                location: Location(file: project.stringsFile.path, line: 1),
-                reason: "Lines has FIXME or TODO. line: \(lines)"
-            )]
-        }
-        else {
-            return dataSets.map(\.violation)
-        }
+        return dataSets.map(\.violation)
     }
 }
 

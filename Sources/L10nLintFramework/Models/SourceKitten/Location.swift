@@ -5,7 +5,7 @@ public struct Location: CustomStringConvertible, Comparable, Codable {
     /// The file path on disk for this location.
     public let file: String?
     /// The line offset in the file for this location. 1-indexed.
-    public let line: Int?
+    public var line: Int?
     /// The character offset in the file for this location. 1-indexed.
     public let character: Int?
 
