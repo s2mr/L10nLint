@@ -9,7 +9,9 @@ public class EmbeddedRules {
         MultiLinefeedRule.self,
         SpaceInKeyRule.self,
         KeyValueExtraSpaceRule.self,
-        MixedChineseRule.self
+        MixedChineseRule.self,
+        IntegerFormatSpecifierRule.self,
+        KeyValueFormatSpecifierCountRule.self
     ]
 
     public static let defaultEnabledRules: [Rule.Type] = [
@@ -22,6 +24,8 @@ public class EmbeddedRules {
         MultiLinefeedRule.self,
         SpaceInKeyRule.self,
         KeyValueExtraSpaceRule.self,
-        MixedChineseRule.self
+        MixedChineseRule.self,
+        IntegerFormatSpecifierRule.self,
+        KeyValueFormatSpecifierCountRule.self
     ]
 }
