@@ -166,6 +166,38 @@ final class RulesTests: XCTestCase {
             ]
         )
     }
+
+    func testIntegerFormatSpecifierRule() throws {
+        let baseProject = try TestHelper.localizedProjects(fixtureName: "Localizables9")
+            .first(where: { $0.name == "Base" })!
+
+        let violations = try IntegerFormatSpecifierRule().validate(baseProject: baseProject, project: baseProject)
+        XCTAssertEqual(
+            violations.map(\.location.point),
+            [
+                LocationPoint(line: 2, character: 20),
+                LocationPoint(line: 3, character: 22),
+                LocationPoint(line: 4, character: 7)
+            ]
+        )
+    }
+
+    func testKeyValueFormatSpecifierCountRule() throws {
+        let baseProject = try TestHelper.localizedProjects(fixtureName: "Localizables9")
+            .first(where: { $0.name == "Base" })!
+
+        let violations = try KeyValueFormatSpecifierCountRule().validate(baseProject: baseProject, project: baseProject)
+        XCTAssertEqual(
+            violations.map(\.location.point),
+            [
+                LocationPoint(line: 3, character: 1),
+                LocationPoint(line: 4, character: 1),
+                LocationPoint(line: 8, character: 1),
+                LocationPoint(line: 9, character: 1),
+                LocationPoint(line: 10, character: 1)
+            ]
+        )
+    }
 }
 
 extension Location {
