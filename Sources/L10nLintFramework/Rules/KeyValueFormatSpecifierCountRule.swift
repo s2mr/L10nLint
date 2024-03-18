@@ -7,7 +7,7 @@ struct KeyValueFormatSpecifierCountRule: Rule {
 
     func validate(baseProject: LocalizedProject, project: LocalizedProject) throws -> [StyleViolation] {
         let keyValueRegex = try NSRegularExpression(pattern: #"^ *"(?<key>.*)" *= *"(?<value>.*)" *; *$"#, options: .anchorsMatchLines)
-        let formatSpecifierRegex = try NSRegularExpression(pattern: #"%[0-9]*(?<type>[@dDuUxXoOfFeEgGcCsSpaAhlqLztj]+)"#)
+        let formatSpecifierRegex = try NSRegularExpression(pattern: #"%[0-9]*(?<type>([@cCsSp]|(([hlqztj]|ll)?[dDuUxXoO])|(L?[aAeEfFg])))"#)
 
         return keyValueRegex.matches(in: project.stringsFile.contents).compactMap { result in
             let nsStringContents = project.stringsFile.contents as NSString
