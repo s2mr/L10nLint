@@ -1,0 +1,10 @@
+"key1_%lld" = "value %lld";
+"key2_%d" = "value %d";
+"key3_%lld" = "value %d";
+"key4_%d" = "value %lld";
+"key5_%@_%lld" = "value %@ %lld";
+"key6_%@_%@" = "value %2@ %1@";
+"key7_%@_%lld_%lld" = "value %@ %lld %lld";
+"key8" = "value %@";
+"key9_%@" = "value %2@ %1@";
+"key10_%lld" = "value %@ %lld";
