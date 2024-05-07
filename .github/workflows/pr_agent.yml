@@ -1,0 +1,22 @@
+on:
+  issue_comment:
+      types: [created]
+
+jobs:
+  pr_agent_job:
+    if: startsWith(github.event.comment.body, '/pragent-review')
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+      contents: write
+    name: Run pr agent on every pull request, respond to user comments
+    steps:
+      - name: PR Agent action step
+        id: pragent
+        uses: Codium-ai/pr-agent@main
+        env:
+          OPENAI_KEY: ${{ secrets.OPENAI_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_REVIEWER.EXTRA_INSTRUCTIONS: 'Please use Japanese in descriptions.'
+          PR_DESCRIPTION.EXTRA_INSTRUCTIONS: 'Please use Japanese in descriptions. Titles should have prefix of commitlint pattern such as `feat:`, `chore:`, `test:`, `fix:`, `ci:`, `docs:` etc'
