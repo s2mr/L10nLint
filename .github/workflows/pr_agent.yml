@@ -4,7 +4,7 @@ on:
 
 jobs:
   pr_agent_job:
-    if: startsWith(github.event.comment.body, '/pragent-review')
+    if: startsWith(github.event.comment.body, '/review')
     runs-on: ubuntu-latest
     permissions:
       issues: write
