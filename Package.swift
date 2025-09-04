@@ -11,7 +11,7 @@ let package = Package(
         .executable(name: "l10nlint", targets: ["l10nlint"])
     ],
     dependencies: [
-         .package(url: "https://github.com/apple/swift-argument-parser", from: "1.2.1"),
+         .package(url: "https://github.com/apple/swift-argument-parser", from: "1.6.1"),
          .package(url: "https://github.com/jpsim/Yams.git", from: "5.4.0")
     ],
     targets: [
